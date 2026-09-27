@@ -59,7 +59,13 @@ say "network: stdio child pipe"
 printf 'ping' | timeout 5 cat 2>&1 && echo " <- stdio roundtrip OK" || echo "stdio FAILED"
 
 say "pty availability (expect absent in cages)"
-python3 -c "import pty; pty.spawn(['true'])" 2>&1 | tail -1
+pty_out=$(python3 -c "import pty; pty.spawn(['true'])" 2>&1)
+if [ -n "$pty_out" ]; then
+  printf '%s\n' "$pty_out" | sed 's/^/  /'
+  echo "PTY SPAWN FAILED (traceback above)"
+else
+  echo "PTY SPAWN OK"
+fi
 ls -d /dev/pts 2>/dev/null || echo "/dev/pts absent"
 
 say "processes: daemons (cron, etc)"
@@ -68,7 +74,12 @@ ps aux 2>/dev/null | grep -iE 'cron|atd|systemd' | grep -v grep || echo "(no cro
 say "dev tree: /dev/pts /proc/net /dev/shm /tmp writability"
 ls -d /proc/net >/dev/null 2>&1 && echo "/proc/net OK" || echo "/proc/net MISSING"
 df -h /tmp /dev/shm 2>/dev/null | tail -3
-echo test > /tmp/probe-write && rm /tmp/probe-write && echo "/tmp writable"
+if echo test > /tmp/probe-write 2>/dev/null; then
+  rm -f /tmp/probe-write
+  echo "/tmp writable"
+else
+  echo "/tmp NOT writable"
+fi
 
 say "toolchain smoke: does cc actually compile"
 cat > /tmp/probe-t.c <<'EOF'
@@ -80,6 +91,16 @@ else
   echo "(no cc)"
 fi
 rm -f /tmp/probe-t.c /tmp/probe-t
+if command -v python3 >/dev/null 2>&1; then
+  python3 -c 'import sys; print("python3", sys.version.split()[0])' 2>&1
+else
+  echo "(no python3)"
+fi
+if command -v node >/dev/null 2>&1; then
+  node -e 'console.log("node", process.version)' 2>&1
+else
+  echo "(no node)"
+fi
 
 say "done"
 echo "Add harness-specific checks below this line: session file format, RPC docs,"

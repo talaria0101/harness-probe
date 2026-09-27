@@ -1,0 +1,15 @@
+name: selftest
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  selftest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the encoded survey
+        run: python3 selftest.py
+      - name: Row counts
+        run: python3 match-tool.py --stats

@@ -24,6 +24,11 @@ Before running anything, write down the rows you will probe.
    "renamed", "removed in vX"). Every named tool is a row.
 4. Count the rows. Say the count in your report. "I attempted every tool" is
    checkable only if the reader knows how many there were.
+5. Encode the checklist as a TSV with columns `id`, `source`, `names`,
+   `match_any_of`, `purpose` (see `tool-table.tsv`), then run
+   `python3 selftest.py <table>` on it. The matcher only finds what the table
+   says, so a dropped row or a mangled cell turns into a phantom tool gap. Fix
+   the table first, probe second.
 
 ## Stage 1: Probe the environment before probing any tool
 
@@ -176,6 +181,11 @@ Close the report with three counts and two lists:
 
 ## Calibrations learned the hard way
 
+- A hand-encoded survey rots silently. A dropped row and a mangled
+  `match_any_of` cell both look exactly like a harness that lacks the tool, and
+  nothing in the probe can tell them apart. `selftest.py` exists because both
+  happened in this table: codex's hosted `web_search` (F35) was missing, and
+  the claude-code `Write`/`Edit`/`Glob`/`Grep` row was unmatchable.
 - The first explanation that fits is the most dangerous object in the probe.
   "pwsh missing" ended one row, but "pty missing" would have wrongly ended the
   background-jobs row had `&`+poll not been tried first.
