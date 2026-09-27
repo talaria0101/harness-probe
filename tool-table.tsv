@@ -1,0 +1,162 @@
+id	source	names	match_any_of	purpose
+A1	opencode	read	read	Read a file or directory, paginated, with line numbers
+A2	opencode	write	write	Create or overwrite a file (must have read it first)
+A3	opencode	edit	edit	Exact string replacement in a file (must have read it first)
+A4	opencode	glob	glob	Fast file pattern matching by glob, any codebase size
+A5	opencode	grep	grep	Fast content search with regex, with include filter and line numbers
+A6	opencode	bash	bash	Shell execution for git/npm/docker/build/test
+A7	opencode	task	task	Launch a subagent for complex multistep work, foreground or background with resume
+A8	opencode	todowrite	todowrite	Structured session task list with pending/in_progress/completed states
+A9	opencode	webfetch	webfetch	Fetch a URL and return markdown/text/html
+A10	opencode	websearch	websearch	Live web search via the Exa or Parallel MCP server chosen per session
+A11	opencode	skill	skill	Load a skill from the system-prompt skill listing into the conversation
+A12	opencode	apply_patch	ApplyPatch, applyPatch, apply_patch, applypatch	GPT-only file-edit envelope (*** Begin Patch)
+A13	opencode	question	question	Ask the user structured questions with options during execution
+A14	opencode	lsp	lsp	LSP code intelligence: definition, references, hover, symbols, call hierarchy
+A15	opencode	plan_exit	PlanExit, planExit, plan_exit, planexit	Exit plan agent after the plan file is complete, with user approval to switch to build
+A16	opencode	invalid	invalid	Internal guard tool that reports invalid arguments back to the model
+A17	opencode	execute	execute	Run a confined orchestration script with access to connected MCP tools
+B1	kimi-code	Read	Read, read	Read a text file with pagination, tail reads, attachment refs
+B2	kimi-code	Write	Write, write	Create, overwrite, or append a file
+B3	kimi-code	Edit	Edit, edit	Exact string replacement in existing files
+B4	kimi-code	Bash	Bash, bash	Shell execution with foreground/background modes, timeouts, streaming
+B5	kimi-code	Glob	Glob, glob	Find files by glob, ripgrep powered, mtime sorted, paginated
+B6	kimi-code	Grep	Grep, grep	Search file contents with ripgrep regex, with filters and output modes
+B7	kimi-code	FetchURL	FetchURL, fetch_u_r_l, fetchurl	Fetch one URL and return extracted text or verbatim body
+B8	kimi-code	WebSearch	WebSearch, web_search, websearch	Web search returning titles/URLs/snippets
+B9	kimi-code	Agent	Agent, agent	Spawn a subagent with fresh context
+B10	kimi-code	AskUserQuestion	AskUserQuestion, ask_user_question, askuserquestion	Ask the user 1-4 structured multiple-choice questions, optional background
+B11	kimi-code	TaskList	TaskList, task_list, tasklist	List background tasks and their status
+B12	kimi-code	TaskOutput	TaskOutput, task_output, taskoutput	Non-blocking snapshot of a background task output plus full-log path
+B13	kimi-code	TaskStop	TaskStop, task_stop, taskstop	Stop a running background task
+B14	kimi-code	WaitFor	WaitFor, wait_for, waitfor	Wait inside the current turn for background tasks, with timeout
+B15	kimi-code	ReadMediaFile	ReadMediaFile, read_media_file, readmediafile	Send an image or video to the model with crop and resolution controls
+B16	kimi-code	select_tools	SelectTools, selectTools, select_tools, selecttools	Lazily load deferred tools by exact name before calling them
+B17	kimi-code	TodoList	TodoList, todo_list, todolist	Session-visible subtask list for multi-step work
+B18	kimi-code	Skill	Skill, skill	Invoke a registered inline skill by name with optional args
+B19	kimi-code	EnterPlanMode	EnterPlanMode, enter_plan_mode, enterplanmode	Enter constrained plan mode (edits limited to the plan file)
+B20	kimi-code	ExitPlanMode	ExitPlanMode, exit_plan_mode, exitplanmode	Present the plan file for approval and exit plan mode, with optional approach options
+B21	kimi-code	AgentSwarm	AgentSwarm, agent_swarm, agentswarm	Launch up to 128 subagents from one prompt template plus item list, or resume existing ones
+B22	kimi-code	CreateGoal	CreateGoal, create_goal, creategoal	Create a durable autonomous goal with a verifiable end state
+B23	kimi-code	GetGoal	GetGoal, get_goal, getgoal	Read the current goal, budgets, status, and terminal reason
+B24	kimi-code	SetGoalBudget	SetGoalBudget, set_goal_budget, setgoalbudget	Set a hard turn/token/time budget on the current goal
+B25	kimi-code	UpdateGoal	UpdateGoal, update_goal, updategoal	Resume, complete, or block the current goal
+B26	kimi-code	CronCreate	CronCreate, cron_create, croncreate	Schedule a prompt as a recurring cron or one-shot reminder
+B27	kimi-code	CronList	CronList, cron_list, cronlist	List scheduled cron tasks
+B28	kimi-code	CronDelete	CronDelete, cron_delete, crondelete	Cancel a scheduled cron task by id
+B29	kimi-code	NotifyUser	NotifyUser, notify_user, notifyuser	Mid-turn progress update into the TUI Updates panel without ending the turn (experimental)
+B30	kimi-code	TowerInit	TowerInit, tower_init, towerinit	Init the .tower/ workspace in the repo
+B31	kimi-code	TowerPlan	TowerPlan, tower_plan, towerplan	Split a goal into missions with branches and isolated worktrees
+B32	kimi-code	TowerSpawn	TowerSpawn, tower_spawn, towerspawn	Spawn a worker or reviewer subagent and register it in the roster
+B33	kimi-code	TowerMerge	TowerMerge, tower_merge, towermerge	Review-gated merge of a mission branch with scope and dependency checks
+B34	kimi-code	TowerTeardown	TowerTeardown, tower_teardown, towerteardown	Tear down worktrees after missions land, keeping the audit trail
+B35	kimi-code	TowerSend	TowerSend, tower_send, towersend	Send an inbox message to a roster agent, tower, or broadcast
+B36	kimi-code	TowerInbox	TowerInbox, tower_inbox, towerinbox	Read inbox messages and broadcasts, newest first
+B37	kimi-code	TowerFinding	TowerFinding, tower_finding, towerfinding	File a structured out-of-scope finding for the tower to route
+B38	kimi-code	TowerReview	TowerReview, tower_review, towerreview	Submit a review verdict stamped to the branch tip
+B39	kimi-code	TowerMission	TowerMission, tower_mission, towermission	Read or update a mission, tasks, blockers, and notes
+B40	kimi-code	TowerStatus	TowerStatus, tower_status, towerstatus	Tower dashboard: missions, roster, review gates, inbox count, activity
+B41	kimi-code	authenticate	authenticate	Per-server OAuth login flow that blocks until the browser callback returns, then swaps in real tools
+D1	pi	read	read	Read a file
+D2	pi	bash	bash	Shell command via a separately spawned non-interactive shell
+D3	pi	powershell	powershell	PowerShell 7 / Windows PowerShell variant of bash, only on Windows
+D4	pi	edit	edit	Targeted text edit on an existing file
+D5	pi	write	write	Create or overwrite a file
+D6	pi	grep	grep	Regex or literal content search with glob, case and literal flags
+D7	pi	find	find	Glob pattern file search, gitignore-aware, 1000-result and byte caps
+D8	pi	ls	ls	Directory listing, alphabetical, dotfiles included
+E1	oh-my-pi	read	read	Files, directories, archives, SQLite databases, internal resources, images, documents and URLs through one path string
+E2	oh-my-pi	bash	bash	Shell command with optional PTY, background-job handling, and supervised service mode
+E3	oh-my-pi	edit	edit	Source edits
+E4	oh-my-pi	write	write	File, writable internal resource, archive entry, SQLite row, or merge-conflict resolution
+E5	oh-my-pi	grep	grep	Regex content search across files, directories, globs and internal URLs
+E6	oh-my-pi	glob	glob	Glob path matching
+E7	oh-my-pi	find	find	Semantic grep: natural-language description in, files and line ranges with calibrated relevance out
+E8	oh-my-pi	ast_grep	AstGrep, astGrep, ast_grep, astgrep	Structural code search over supported source files, via native ast-grep
+E9	oh-my-pi	ast_edit	AstEdit, astEdit, ast_edit, astedit	Preview and apply structural rewrites, via native ast-grep
+E10	oh-my-pi	lsp	lsp	Diagnostics, navigation, symbols, renames, code actions, capabilities, raw requests
+E11	oh-my-pi	eval	eval	One Python or JavaScript cell in a persistent runtime
+E12	oh-my-pi	task	task	Subagents, one per call or a tasks[] batch
+E13	oh-my-pi	wait	wait	Block until the next background result, peer message, or steering interrupt
+E14	oh-my-pi	todo	todo	One mutation to the session todo list, returning phase and task state
+E15	oh-my-pi	web_search	WebSearch, webSearch, web_search, websearch	One web query through the first available provider, LLM-formatted answer plus source URLs
+E16	oh-my-pi	ask	ask	Structured option-picker or free-form questions to the user
+E17	oh-my-pi	github	github	GitHub CLI dispatch: repos, repo files, PRs, search, Actions run watching
+E18	oh-my-pi	debug	debug	One DAP debug session, also reused by the debug UI subsystem
+E19	oh-my-pi	ida	ida	Open, edit and script IDA Pro databases via shared daemon-broker daemons
+E20	oh-my-pi	checkpoint	checkpoint	Mark the conversation state so rewind can collapse exploratory context
+E21	oh-my-pi	rewind	rewind	End a checkpoint by pruning context and keeping a concise report
+E22	oh-my-pi	context_notes	ContextNotes, contextNotes, context_notes, contextnotes	Read or replace the branch's persistent experimental context notebook
+E23	oh-my-pi	new_context	NewContext, newContext, new_context, newcontext	Request a fresh context window, preserving the notebook and recoverable branch history
+E24	oh-my-pi	security_scan	SecurityScan, securityScan, security_scan, securityscan	Plan and run native security reviews, validate stored findings, interact with cloud scans
+E25	oh-my-pi	retain	retain	Store durable facts in the active long-term memory backend
+E26	oh-my-pi	recall	recall	Search the active long-term memory backend
+E27	oh-my-pi	reflect	reflect	Synthesise an answer over the active long-term memory backend
+E28	oh-my-pi	memory_edit	MemoryEdit, memoryEdit, memory_edit, memoryedit	Update, forget or invalidate memories by id
+E29	oh-my-pi	learn	learn	Capture a reusable lesson into memory, optionally creating a managed skill
+E30	oh-my-pi	manage_skill	ManageSkill, manageSkill, manage_skill, manageskill	Create, update or delete an isolated managed skill
+E31	oh-my-pi	think	think	Private scratchpad reasoning, gated on the transport actually suppressing native reasoning
+E32	oh-my-pi	yield	yield	Submit a terminal structured result, an incremental section, or one workpool item
+E33	oh-my-pi	goal	goal	Goal-mode objective: create, get, resume, complete, drop, with a token budget
+F1	codex	exec_command	ExecCommand, execCommand, exec_command, execcommand	Run a shell command with command, workdir, tty, yield_time_ms, max_output_tokens, and optional shell and login
+F2	codex	write_stdin	WriteStdin, writeStdin, write_stdin, writestdin	Write to a running unified-exec process
+F3	codex	apply_patch	ApplyPatch, applyPatch, apply_patch, applypatch	The *** Begin Patch freeform edit envelope
+F4	codex	view_image	ViewImage, viewImage, view_image, viewimage	Attach an image, with original-detail and unified image budget controls
+F5	codex	update_plan	UpdatePlan, updatePlan, update_plan, updateplan	Structured plan state, behind config
+F6	codex	request_user_input	RequestUserInput, requestUserInput, request_user_input, requestuserinput	Structured question to the user, DirectModelOnly exposure
+F7	codex	request_user_input_async	RequestUserInputAsync, requestUserInputAsync, request_user_input_async, requestuserinputasync	Async variant offered when the model catalog advertises it
+F8	codex	send_message_to_user_async	SendMessageToUserAsync, sendMessageToUserAsync, send_message_to_user_async, sendmessagetouserasync	Mid-turn user message, DirectModelOnly
+F9	codex	new_context	NewContext, newContext, new_context, newcontext	Start a fresh context window, DirectModelOnly (TokenBudget feature)
+F10	codex	get_context_remaining	GetContextRemaining, getContextRemaining, get_context_remaining, getcontextremaining	Remaining token budget (TokenBudget feature)
+F11	codex	clock.curr_time	ClockCurrTime, clock.curr_time, clock.currtime, clockCurrTime, clock_curr_time, clockcurrtime, curr_time	Current time reminder, gated on feature or model advertising clock
+F12	codex	clock.sleep	ClockSleep, clock.sleep, clockSleep, clock_sleep, clocksleep, sleep	Sleep until a wall-clock moment, replacing timeout waits
+F13	codex	wait_for_environment	WaitForEnvironment, waitForEnvironment, wait_for_environment, waitforenvironment	Block until an environment is ready, behind Feature::DeferredExecutor
+F14	codex	request_permissions	RequestPermissions, requestPermissions, request_permissions, requestpermissions	Ask the user for extra capabilities mid-run
+F15	codex	tool_search	ToolSearch, toolSearch, tool_search, toolsearch	Deferred tool discovery over searchable sources
+F16	codex	list_available_plugins_to_install	ListAvailablePluginsToInstall, listAvailablePluginsToInstall, list_available_plugins_to_install, listavailablepluginstoinstall	Browse installable candidates, list presentation
+F17	codex	request_plugin_install	RequestPluginInstall, requestPluginInstall, request_plugin_install, requestplugininstall	Install a chosen candidate
+F18	codex	test_sync_tool	TestSyncTool, testSyncTool, test_sync_tool, testsynctool	Test sync, only when the model catalog advertises it
+F19	codex	list_mcp_resources	ListMcpResources, listMcpResources, list_mcp_resources, listmcpresources	List MCP resources, only when servers are configured
+F20	codex	list_mcp_resource_templates	ListMcpResourceTemplates, listMcpResourceTemplates, list_mcp_resource_templates, listmcpresourcetemplates	List MCP resource templates
+F21	codex	read_mcp_resource	ReadMcpResource, readMcpResource, read_mcp_resource, readmcpresource	Read one MCP resource
+F22	codex	exec	exec	Code mode: a confined TypeScript runtime that calls the other tools through a generated API
+F23	codex	multi_agent_v1.spawn_agent	MultiAgentV1SpawnAgent, multiAgentV1SpawnAgent, multi_agent_v1.spawn_agent, multi_agent_v1_spawn_agent, multiagentv1.spawnagent, multiagentv1spawnagent, spawn_agent	Spawn a subagent
+F24	codex	multi_agent_v1.send_input	MultiAgentV1SendInput, multiAgentV1SendInput, multi_agent_v1.send_input, multi_agent_v1_send_input, multiagentv1.sendinput, multiagentv1sendinput, send_input	Send input to a running subagent
+F25	codex	multi_agent_v1.resume_agent	MultiAgentV1ResumeAgent, multiAgentV1ResumeAgent, multi_agent_v1.resume_agent, multi_agent_v1_resume_agent, multiagentv1.resumeagent, multiagentv1resumeagent, resume_agent	Resume a closed subagent
+F26	codex	multi_agent_v1.wait_agent	MultiAgentV1WaitAgent, multiAgentV1WaitAgent, multi_agent_v1.wait_agent, multi_agent_v1_wait_agent, multiagentv1.waitagent, multiagentv1waitagent, wait_agent	Wait on a subagent, with timeout options
+F27	codex	multi_agent_v1.close_agent	MultiAgentV1CloseAgent, close_agent, multiAgentV1CloseAgent, multi_agent_v1.close_agent, multi_agent_v1_close_agent, multiagentv1.closeagent, multiagentv1closeagent	Close a subagent
+F28	codex	spawn_agent	SpawnAgent, spawnAgent, spawn_agent, spawnagent	v2 spawn, with model overrides and agent-role metadata
+F29	codex	send_message	SendMessage, sendMessage, send_message, sendmessage	v2 agent-to-agent message
+F30	codex	followup_task	FollowupTask, followupTask, followup_task, followuptask	v2 follow-up dispatch
+F31	codex	wait_agent	WaitAgent, waitAgent, wait_agent, waitagent	v2 wait, timeout options per the turn context
+F32	codex	interrupt_agent	InterruptAgent, interruptAgent, interrupt_agent, interruptagent	v2 interrupt
+F33	codex	list_agents	ListAgents, listAgents, list_agents, listagents	v2 roster
+F34	codex	web.run	WebRun, run, web.run, webRun, web_run, webrun	Standalone web search, an extension tool that is dropped unless Feature::StandaloneWebSearch and the mode are both on
+F36	codex	image_gen.imagegen	ImageGenImagegen, imageGenImagegen, image_gen.imagegen, image_gen_imagegen, imagegen, imagegen.imagegen, imagegenimagegen	Image generation, gated on model capability
+G1	claude-code	Bash	Bash, bash	Shell command, with permission rules per command pattern, sandbox, background
+G2	claude-code	PowerShell	PowerShell, power_shell, powershell	Windows shell variant of Bash, with its own permission validation
+G3	claude-code	Read`, G4 `Write`, G5 `Edit	Read`, G4 `Write`, G5 `Edit, read`, _g_4 `_write`, _g_5 `_edit, read`, g4 `write`, g5 `edit	File tools
+G6	claude-code	Glob`, G7 `Grep	Glob`, G7 `Grep, glob`, _g_7 `_grep, glob`, g7 `grep	Path and content search
+G8	claude-code	NotebookEdit	NotebookEdit, notebook_edit, notebookedit	Jupyter notebook cell insert/replace
+G9	claude-code	TaskCreate, TaskGet, TaskUpdate, TaskList	TaskCreate, TaskGet, TaskList, TaskUpdate, task_create, task_get, task_list, task_update, taskcreate, taskget, tasklist, taskupdate	Task tracking
+G10	claude-code	TodoWrite	TodoWrite, todo_write, todowrite	Older todo tool, same model gate as G9
+G11	claude-code	TaskStop, TaskOutput	TaskOutput, TaskStop, task_output, task_stop, taskoutput, taskstop	Background task surface converged on one output tool plus one stop tool
+G12	claude-code	Agent	Agent, agent	Subagent spawn, with subagent_type, name, and worktree isolation
+G13	claude-code	SendMessage, ListAgents	ListAgents, SendMessage, list_agents, listagents, send_message, sendmessage	Cross-session and cross-agent messaging on the same machine, with delivery notices, inbox limits, offline queuing, and a notify_when_idle one-shot
+G14	claude-code	Workflow	Workflow, workflow	Dynamic workflows over tens to hundreds of agents with structured output and worktree isolation
+G15	claude-code	EnterWorktree, ExitWorktree	EnterWorktree, ExitWorktree, enter_worktree, enterworktree, exit_worktree, exitworktree	Model-callable worktree enter/exit, with a path parameter, a base-ref setting, and a confirmation for worktrees outside
+G16	claude-code	ToolSearch	ToolSearch, tool_search, toolsearch	Deferred tool loading
+G17	claude-code	MCPSearch	MCPSearch, m_c_p_search, mcpsearch	Auto-defers MCP tools once their descriptions exceed 10% of the context window
+G18	claude-code	WebSearch	WebSearch, web_search, websearch	Session-wide cap, default 200 calls, CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION
+G19	claude-code	WebFetch	WebFetch, web_fetch, webfetch	URL fetch, also subject to a Cowork fetch budget
+G20	claude-code	AskUserQuestion	AskUserQuestion, ask_user_question, askuserquestion	Structured multi-question, multi-select, with notes and preview
+G21	claude-code	Skill	Skill, skill	Model-callable skill invocation, and since the 2
+G22	claude-code	ExitPlanMode	ExitPlanMode, exit_plan_mode, exitplanmode	Plan mode exit
+G23	claude-code	Monitor	Monitor, monitor	Long-running watch on a background script, streams events to the model, max 30 min deadline, per-command allowed_domains in auto mode
+G24	claude-code	SlashCommand	SlashCommand, slash_command, slashcommand	Lets the model invoke user slash commands
+G25	claude-code	CronCreate, CronList	CronCreate, CronList, cron_create, cron_list, croncreate, cronlist	Scheduled prompts that re-enter the session
+G26	claude-code	ScheduleWakeup	ScheduleWakeup, schedule_wakeup, schedulewakeup	Named as a tool whose definition is pinned across --resume to protect prompt caching
+G27	claude-code	RemoteTrigger	RemoteTrigger, remote_trigger, remotetrigger	A run action against the remote service
+G28	claude-code	SendFeedback	SendFeedback, send_feedback, sendfeedback	Model drafts a feedback report for the user to review from /feedback
+G29	claude-code	ListPlugins	ListPlugins, list_plugins, listplugins	Lists plugins enabled on the claude.ai account, distinct from locally installed plugins
+G30	claude-code	TeamCreate, TeamDelete	TeamCreate, TeamDelete, team_create, team_delete, teamcreate, teamdelete	Removed: replaced by one implicit team per session under CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
